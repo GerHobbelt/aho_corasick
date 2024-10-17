@@ -69,7 +69,12 @@ size_t bench_aho_corasick(vector<string> text_strings, trie& t) {
 	return count;
 }
 
-int main(int argc, char** argv) {
+#if defined(BUILD_MONOLITHIC)
+#define main   aho_corasick_benchmark_main
+#endif
+
+extern "C"
+int main(int argc, const char** argv) {
 	cout << "*** Aho-Corasick Benchmark ***" << endl;
 
 	cout << "Generating input text ...";
